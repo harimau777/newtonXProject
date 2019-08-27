@@ -1,25 +1,24 @@
 import React from 'react';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+
 import logo from './logo.svg';
 import './App.css';
 
-function App() {
+const LandingPageWithRedirect = () => {
+  __has jwt__
+    ? <Redirect to="/dashboard" />
+    : <LandingPage />
+}
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <Route path="/" component={LandingPageWithRedirect} />
+        <Route path="/dashboard" component={Dashboard} />
+        <Route path="/userDetails" component={UserDetails} />
+      </div>
+    </Router>
   );
 }
 
